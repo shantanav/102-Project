@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RIT Scheduling App Try 2</string>
+    <string name="title_home">Home</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="calendar_title">My Calendar</string>
+</resources>
