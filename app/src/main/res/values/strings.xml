@@ -4,4 +4,7 @@
     <string name="title_calendar">Calendar</string>
     <string name="title_notifications">Notifications</string>
     <string name="calendar_title">My Calendar</string>
+    <string name="welcome_tate">Welcome, Tate</string>
+    <string name="here_s_your_day_visualized">Here\'s your day, visualized:</string>
+    <string name="notifications">Notifications</string>
 </resources>
