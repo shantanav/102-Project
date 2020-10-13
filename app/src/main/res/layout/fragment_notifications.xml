@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:gravity="start"
-                android:text="11:00 AM"
+                android:text="OCT 13"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:gravity="start"
-                android:text="12:00 PM"
+                android:text="OCT 29"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:gravity="start"
-                android:text="01:00 AM"
+                android:text="OCT 30"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
