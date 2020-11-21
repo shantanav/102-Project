@@ -38,6 +38,7 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="wrap_content"
         android:layout_height="320dp"
         android:dateTextAppearance="@style/TextAppearance.AppCompat.Large"
@@ -50,4 +51,13 @@
         app:layout_constraintVertical_bias="0.0">
 
     </CalendarView>
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
