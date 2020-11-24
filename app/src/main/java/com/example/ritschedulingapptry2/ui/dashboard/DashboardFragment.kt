@@ -17,13 +17,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.ritschedulingapptry2.R
 import com.example.ritschedulingapptry2.Event
-import java.time.LocalDate
-import java.time.LocalDateTime
+import com.example.ritschedulingapptry2.MainActivity
+import kotlinx.android.synthetic.main.dialog_create_event.view.*
+import java.time.*
 import java.util.*
 
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
+    var year: Int = 0
+    var month: Int = 0
+    var dayOfMonth: Int = 0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -45,6 +49,13 @@ class DashboardFragment : Fragment() {
         addButton.setOnClickListener(@RequiresApi(Build.VERSION_CODES.O)
         fun(_) { createEvent(container, inflater, view) })
 
+        val calendarView: CalendarView = view.findViewById(R.id.calendarView)
+        calendarView.setOnDateChangeListener { _, calYear, calMonth, calDayOfMonth ->
+            Log.d("Calendar", "In onDateChangeListener")
+            year = calYear
+            month = calMonth
+            dayOfMonth = calDayOfMonth
+        }
         return view
     }
 
@@ -55,6 +66,7 @@ class DashboardFragment : Fragment() {
         val nameView: EditText = dialogView.findViewById(R.id.event_name)
         val descriptionView: EditText = dialogView.findViewById(R.id.description)
         val datePicker: DatePicker = dialogView.findViewById(R.id.datePicker2)
+        datePicker.updateDate(this.year, this.month, this.dayOfMonth)
         val timePicker: TimePicker = dialogView.findViewById(R.id.timePicker)
         val title = TextView(container?.context)
         title.text = getString(R.string.event_create_header);
@@ -68,14 +80,15 @@ class DashboardFragment : Fragment() {
             ?.setView(dialogView)
             ?.setPositiveButton(R.string.yes) { _, _ ->
                 val day = datePicker.dayOfMonth
-                val month = datePicker.month
+                val month = datePicker.month + 1
                 val year = datePicker.year
                 val hour = timePicker.hour
                 val minute = timePicker.minute
                 val setTime: LocalDateTime = LocalDateTime.of(year, month, day, hour, minute)
                 val event: Event = Event(nameView.text.toString(),
                     descriptionView.text.toString(), setTime)
-                Toast.makeText(container.context, event.toString(), Toast.LENGTH_SHORT).show()
+                (this.activity as MainActivity).addEvent(event)
+                Toast.makeText(container.context, "Event created", Toast.LENGTH_SHORT).show()
             }?.setNegativeButton(R.string.cancel) { _, _ ->
                 Toast.makeText(container.context, "Not created", Toast.LENGTH_SHORT).show()
             }

@@ -9,6 +9,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
+    public var events: Array<Event> = arrayOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,5 +21,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun addEvent(e: Event) {
+        events = append(events, e)
+    }
+
+    fun append(arr: Array<Event>, element: Event): Array<Event> {
+        val list: MutableList<Event> = arr.toMutableList()
+        list.add(element)
+        return list.toTypedArray()
     }
 }
